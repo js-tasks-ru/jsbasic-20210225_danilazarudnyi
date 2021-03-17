@@ -1,27 +1,11 @@
 function getMinMax(str) {
-  let newArr = [];
-  let arr = str.split(',').join(' ');
-  let arr2 = arr.split(' ');
-  for (let i = 0; i < arr2.length; i++) {
-    if (isNaN(arr2[i]) == false) {
-      newArr.push(+arr2[i]);
-    }
-  }
-
-  let max = newArr[0];
-  let min = newArr[0];
-  for (let i = 0; i < newArr.length; i++) {
-    if (min > newArr[i]) {
-      min = newArr[i];
-    }
-    if (max < newArr[i]) {
-      max = newArr[i];
-    }
-  }
-
-  let result = {
-    min: min,
-    max: max
-  }
-  return result;
+  let result = str
+	.split(',').join(' ').split(' ')
+	.filter((item) => isFinite(item))
+	.map((item)=> Number(item));
+	
+	let min = Math.min(...result);
+	let max = Math.max(...result);
+	
+	return {min, max};
 }
