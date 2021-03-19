@@ -1,5 +1,5 @@
 function makeDiagonalRed(table) {
-  for (let row = 0; row < table.rows.length; row++) {
-    table.rows[row].cells[row].style.backgroundColor = 'red';
+  for (let rowIndex = 0; rowIndex < table.rows.length; rowIndex++) {
+    table.rows[rowIndex].cells[rowIndex].style.backgroundColor = 'red';
   }
 }
