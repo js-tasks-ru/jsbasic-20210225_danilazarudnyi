@@ -9,16 +9,16 @@ function highlight(table) {
       tr.classList.add('unavailable');
     }
     if (!tr.querySelector('td:last-child').getAttribute('data-available')) {
-      tr.setAttribute('hidden', 'true')
+      tr.hidden = true;
     }
-    if (tr.querySelector('td:nth-child(3)').innerHTML == 'm') {
+    if (tr.querySelector('td:nth-child(3)').textContent == 'm') {
       tr.classList.add('male');
     }
-    if (tr.querySelector('td:nth-child(3)').innerHTML == 'f') {
+    if (tr.querySelector('td:nth-child(3)').textContent == 'f') {
       tr.classList.add('female');
     }
     if (Number(tr.querySelector('td:nth-child(2)').innerHTML) < 18) {
-      tr.setAttribute('style', 'text-decoration: line-through')
+      tr.style.textDecoration = 'line-through';
 
     }
 
