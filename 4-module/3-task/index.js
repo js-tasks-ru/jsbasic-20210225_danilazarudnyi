@@ -17,7 +17,7 @@ function highlight(table) {
     if (tr.querySelector('td:nth-child(3)').textContent == 'f') {
       tr.classList.add('female');
     }
-    if (Number(tr.querySelector('td:nth-child(2)').innerHTML) < 18) {
+    if (Number(tr.querySelector('td:nth-child(2)').textContent) < 18) {
       tr.style.textDecoration = 'line-through';
 
     }
