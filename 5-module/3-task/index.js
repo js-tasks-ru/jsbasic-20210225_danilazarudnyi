@@ -14,7 +14,7 @@ function initCarousel() {
       arrowLeft.style.display = '';
     }
 
-    if (slideIndex == 3) {
+    if (slideIndex == slides.length - 1) {
       arrowRight.style.display = 'none';
     } else {
       arrowRight.style.display = '';
