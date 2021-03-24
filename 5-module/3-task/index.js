@@ -1,43 +1,39 @@
 function initCarousel() {
+
   const carouselInner = document.querySelector('.carousel__inner');
   const arrowRight = document.querySelector('.carousel__arrow_right');
   const arrowLeft = document.querySelector('.carousel__arrow_left');
   const slides = document.querySelectorAll('.carousel__slide');
 
-  let slideIndex = 0;
-  arrowLeft.style.display = 'none';
-  function checkDisplay() {
-    if (slideIndex == 0) {
+  let widthCarousel = carouselInner.offsetWidth;
+
+  let position = 0;
+
+  if (position == 0) {
+    arrowLeft.style.display = 'none';
+  }
+
+  arrowLeft.onclick = function () {
+    position += widthCarousel;
+    position = Math.min(position, 0);
+    carouselInner.style.transform = `translateX(${position}px)`;
+
+    if (position == 0) {
       arrowLeft.style.display = 'none';
     }
-    else {
-      arrowLeft.style.display = '';
-    }
+    arrowRight.style.display = '';
+  };
 
-    if (slideIndex == slides.length - 1) {
+  arrowRight.onclick = function () {
+    let maxPosition = -widthCarousel * (slides.length - 1);
+
+    position -= widthCarousel;
+    position = Math.max(position, maxPosition);
+    carouselInner.style.transform = `translateX(${position}px)`;
+
+    if (position == maxPosition) {
       arrowRight.style.display = 'none';
-    } else {
-      arrowRight.style.display = '';
     }
-  }
-  let sliderTransform = 0;
-  arrowLeft.addEventListener('click', function () {
-    const slide = slides[slideIndex];
-    const width = slide.offsetWidth;
-    sliderTransform = sliderTransform + width;
-    carouselInner.style.transform = `translateX(${sliderTransform}px)`;
-    slideIndex--;
-    checkDisplay();
-  });
-
-  arrowRight.addEventListener('click', function () {
-    const slide = slides[slideIndex];
-    const width = slide.offsetWidth;
-    sliderTransform = sliderTransform - width;
-    carouselInner.style.transform = `translateX(${sliderTransform}px)`;
-    slideIndex++;
-    checkDisplay();
-
-  });
+    arrowLeft.style.display = '';
+  };
 }
-
