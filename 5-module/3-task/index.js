@@ -9,9 +9,7 @@ function initCarousel() {
 
   let position = 0;
 
-  if (position == 0) {
-    arrowLeft.style.display = 'none';
-  }
+  arrowLeft.style.display = 'none';
 
   arrowLeft.onclick = function () {
     position += widthCarousel;
@@ -20,8 +18,9 @@ function initCarousel() {
 
     if (position == 0) {
       arrowLeft.style.display = 'none';
+    } else {
+      arrowRight.style.display = '';
     }
-    arrowRight.style.display = '';
   };
 
   arrowRight.onclick = function () {
@@ -33,7 +32,8 @@ function initCarousel() {
 
     if (position == maxPosition) {
       arrowRight.style.display = 'none';
+    } else {
+      arrowLeft.style.display = '';
     }
-    arrowLeft.style.display = '';
   };
 }
