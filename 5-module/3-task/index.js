@@ -8,32 +8,37 @@ function initCarousel() {
   let widthCarousel = carouselInner.offsetWidth;
 
   let position = 0;
-
+  let maxPosition = -widthCarousel * (slides.length - 1);
   arrowLeft.style.display = 'none';
 
   arrowLeft.onclick = function () {
     position += widthCarousel;
     position = Math.min(position, 0);
-    carouselInner.style.transform = `translateX(${position}px)`;
-
-    if (position == 0) {
-      arrowLeft.style.display = 'none';
-    } else {
-      arrowRight.style.display = '';
-    }
+    update();
   };
 
   arrowRight.onclick = function () {
-    let maxPosition = -widthCarousel * (slides.length - 1);
 
     position -= widthCarousel;
     position = Math.max(position, maxPosition);
+    update();
+  };
+  
+  function update() {
+
     carouselInner.style.transform = `translateX(${position}px)`;
 
-    if (position == maxPosition) {
-      arrowRight.style.display = 'none';
-    } else {
-      arrowLeft.style.display = '';
+    if (position == 0) {
+      arrowLeft.style.display = `none`;
+      arrowRight.style.display = ``;
     }
-  };
+    else if (position == maxPosition) {
+      arrowRight.style.display = `none`;
+      arrowLeft.style.display = ``;
+    }
+    else {
+      arrowRight.style.display = ``;
+      arrowLeft.style.display = ``;
+    }
+  }
 }
